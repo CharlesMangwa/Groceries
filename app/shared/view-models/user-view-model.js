@@ -1,26 +1,26 @@
-var config = require("../../shared/config");
-var fetchModule = require("fetch");
-var Observable = require("data/observable").Observable;
+var config = require('../../shared/config');
+var fetchModule = require('fetch');
+var Observable = require('data/observable').Observable;
 
 function User(info) {
     info = info || {};
 
     // You can add properties to observables on creation
     var viewModel = new Observable({
-        email: info.email || "",
-        password: info.password || ""
+        email: info.email || '',
+        password: info.password || ''
     });
 
     viewModel.register = function() {
-        return fetchModule.fetch(config.apiUrl + "Users", {
-            method: "POST",
+        return fetchModule.fetch(config.apiUrl + 'Users', {
+            method: 'POST',
             body: JSON.stringify({
-                Username: viewModel.get("email"),
-                Email: viewModel.get("email"),
-                Password: viewModel.get("password")
+                Username: viewModel.get('email'),
+                Email: viewModel.get('email'),
+                Password: viewModel.get('password')
             }),
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
         }).then(handleErrors);
     };
